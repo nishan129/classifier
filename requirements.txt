@@ -1,0 +1,13 @@
+numpy 
+pandas
+matplotlib
+notebook
+PyYAML
+Flask
+from_root
+ensure
+python-box
+tqdm
+joblib
+gdown
+-e .
