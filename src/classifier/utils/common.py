@@ -11,28 +11,31 @@ import joblib
 
 
 @ensure_annotations
-def read_yaml(filepath:Path) -> ConfigBox:
-    """read yaml file and return
+def read_yaml(path_to_yaml: Path) -> ConfigBox:
+    """reads yaml file and returns
 
     Args:
-        filepath (str): path like input
-    
+        path_to_yaml (str): path like input
+
     Raises:
         ValueError: if yaml file is empty
         e: empty file
 
     Returns:
-        ConfigBox: config box type
+        ConfigBox: ConfigBox type
     """
     try:
-        with open(filepath, 'r') as file:
-            data = yaml.safe_load(file)
-            return ConfigBox(data)
+        with open(path_to_yaml) as yaml_file:
+            content = yaml.safe_load(yaml_file)
+            logging.info(f"yaml file: {path_to_yaml} loaded successfully")
+            return ConfigBox(content)
+    except Exception:
+        raise ValueError("yaml file is empty")
     except Exception as e:
-        raise ModelException(e,sys)
+        raise e
     
 @ensure_annotations
-def write_yaml(filepath:Path, data:Any) -> ConfigBox:
+def write_yaml(filepath:Path, data:Any):
     """Write yaml file and return config box
 
     Args:
