@@ -12,4 +12,5 @@ joblib
 gdown
 keras
 tensorflow
+scipy
 -e .

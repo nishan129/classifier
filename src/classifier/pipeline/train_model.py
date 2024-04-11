@@ -1,7 +1,5 @@
 from src.classifier.entity.config_entity import TrainingConfig
 from src.classifier.components.training import Training
-from src.classifier.components.data_ingenstion import DataIngestion
-from src.classifier.components.base_model import PrepareBaseModel
 from src.classifier.exception import ModelException
 from src.classifier.logger import logging
 import sys
