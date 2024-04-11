@@ -31,8 +31,6 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
             return ConfigBox(content)
     except Exception:
         raise ValueError("yaml file is empty")
-    except Exception as e:
-        raise e
     
 @ensure_annotations
 def write_yaml(filepath:Path, data:Any):

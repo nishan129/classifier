@@ -1,4 +1,4 @@
-from src.classifier.entity.config_entity import DataIngenstionConfig
+from src.classifier.entity.config_entity import DataIngestionConfig
 from src.classifier.components.data_ingenstion import DataIngenstion
 from src.classifier.exception import ModelException
 from src.classifier.logger import logging
