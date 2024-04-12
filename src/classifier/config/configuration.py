@@ -2,7 +2,7 @@ from src.classifier.constant import *
 from src.classifier.logger import logging
 from src.classifier.exception import ModelException
 from src.classifier.utils.common import read_yaml,create_directory
-from src.classifier.entity.config_entity import DataIngestionConfig, TrainingConfig
+from src.classifier.entity.config_entity import DataIngestionConfig, TrainingConfig, EvaluationConfig
 from src.classifier.entity.config_entity import BaseModelConfig
 import os
 class ConfigurationManager:
@@ -19,7 +19,7 @@ class ConfigurationManager:
 
     
     def get_data_ingestion_config(self) -> DataIngestionConfig:
-        config = self.config.data_ingestion
+        config = self.config.data_ingenstion
 
         create_directory([config.root_dir])
 
@@ -55,7 +55,7 @@ class ConfigurationManager:
         training = self.config.training
         prepare_base_model = self.config.prepare_base_model
         params = self.params
-        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "kidney-ct-scan-image")
+        training_data = os.path.join(self.config.data_ingenstion.unzip_dir, "kidney-ct-scan-image")
         create_directory([
             Path(training.root_dir)
         ])
@@ -72,3 +72,14 @@ class ConfigurationManager:
         )
 
         return training_config
+    
+    
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingenstion/kidney-ct-scan-image",
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return eval_config

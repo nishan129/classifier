@@ -68,7 +68,7 @@ def create_directory(path_to_directory:list, verbose=True):
         raise ModelException(e,sys)
 
 @ensure_annotations
-def save_json(path:str, data:dict):
+def save_json(path:Path, data:dict):
     """Save Dict to JSON file
 
     Args:
