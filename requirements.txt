@@ -13,4 +13,5 @@ gdown
 keras
 tensorflow
 scipy
+Flask-Cors
 -e .

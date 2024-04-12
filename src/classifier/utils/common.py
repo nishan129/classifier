@@ -8,6 +8,7 @@ from src.classifier.exception import ModelException
 from src.classifier.logger import logging
 import json, sys
 import joblib
+import base64
 
 
 @ensure_annotations
@@ -101,3 +102,9 @@ def load_json(path:str) -> ConfigBox:
             return ConfigBox(data)
     except Exception as e:
         raise ModelException(e,sys)
+    
+def decodeImage(imgstring, fileName):
+    imgdata = base64.b64decode(imgstring)
+    with open(fileName, 'wb') as f:
+        f.write(imgdata)
+        f.close()
