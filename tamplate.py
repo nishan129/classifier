@@ -25,7 +25,7 @@ file = [
     "requirements.txt",
     "setup.py",
     "research/trials.ipynb",
-    "tamplates/index.html"
+    "templates/index.html"
 ]
 
 for filepath in file:
